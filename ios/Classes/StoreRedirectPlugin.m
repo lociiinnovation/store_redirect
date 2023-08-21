@@ -17,14 +17,27 @@
                                        message:@"Invalid app id"
                                        details:nil]);
         } else {
+              BOOL isRunningTestFlightBeta = [[[[NSBundle mainBundle] appStoreReceiptURL] lastPathComponent] isEqualToString:@"sandboxReceipt"];
+  if (isRunningTestFlightBeta) {
+NSURL *presenceCheck = [NSURL URLWithString:@"itms-beta://"];
+NSString* testflightLink = [NSString stringWithFormat:@"https://beta.itunes.apple.com/v1/app/%@", appId];
+NSURL *deepLink = [NSURL URLWithString:testflightLink];
+UIApplication *app = [UIApplication sharedApplication];
+if ([app canOpenURL:presenceCheck]) {
+    [app openURL:deepLink];
+}  } else {
             NSString* iTunesLink;
             if([[[UIDevice currentDevice] systemVersion] floatValue] >= 11) {
                 iTunesLink = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/xy/app/foo/id%@", appId];
             } else {
                 iTunesLink = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@", appId];
             }
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
+
+              }
+
+
             
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
             
             result(nil);
         }
