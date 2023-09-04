@@ -18,7 +18,7 @@
                                        details:nil]);
         } else {
               BOOL isRunningTestFlightBeta = [[[[NSBundle mainBundle] appStoreReceiptURL] lastPathComponent] isEqualToString:@"sandboxReceipt"];
-  if (isRunningTestFlightBeta) {
+  if (!isRunningTestFlightBeta) {
 NSURL *presenceCheck = [NSURL URLWithString:@"itms-beta://"];
 NSString* testflightLink = [NSString stringWithFormat:@"https://testflight.apple.com/join/pXBSfriY"];
 NSURL *deepLink = [NSURL URLWithString:testflightLink];
