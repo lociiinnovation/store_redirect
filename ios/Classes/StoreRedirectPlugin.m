@@ -20,7 +20,7 @@
               BOOL isRunningTestFlightBeta = [[[[NSBundle mainBundle] appStoreReceiptURL] lastPathComponent] isEqualToString:@"sandboxReceipt"];
   if (isRunningTestFlightBeta) {
 NSURL *presenceCheck = [NSURL URLWithString:@"itms-beta://"];
-NSString* testflightLink = [NSString stringWithFormat:@"https://beta.itunes.apple.com/v1/app/%@", appId];
+NSString* testflightLink = [NSString stringWithFormat:@"https://testflight.apple.com/join/pXBSfriY"];
 NSURL *deepLink = [NSURL URLWithString:testflightLink];
 UIApplication *app = [UIApplication sharedApplication];
 if ([app canOpenURL:presenceCheck]) {
