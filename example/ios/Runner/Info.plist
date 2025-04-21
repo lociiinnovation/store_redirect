@@ -46,8 +46,8 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
-	<true/>
-	<key>UIApplicationSupportsIndirectInputEvents</key>
-	<true/>
+ 	<true/>
+ 	<key>UIApplicationSupportsIndirectInputEvents</key>
+ 	<true/>
 </dict>
 </plist>
